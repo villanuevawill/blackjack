@@ -11,10 +11,12 @@ class window.HandView extends Backbone.View
 
   render: ->
     @$el.children().detach()
-    @$el.html @template @collection
+    if @collection.at(0).get('revealed') is true
+      @$el.html @template @collection
+    else @$el.html '<h2> Dealer (<span class="score"></span>)</h2>'
     @$el.append @collection.map (card) ->
       new CardView(model: card).$el
-
+    console.log(@collection)
     @$('.score').text @collection.scores()[0]
 
 

@@ -7,14 +7,13 @@ class window.App extends Backbone.Model
     @set 'dealerHand', deck.dealDealer()
 
     @get('dealerHand').on 'flip', ->
-    	if @.scores()[1] 
-    		if @.scores()[1] <= 17
+    	if @.scores()[1]
     			@.hit()
-     else if @.scores() < 17 then @.hit()
-      #if @.scores() > 17 and @.scores() < 21 then win
+     else if @.scores()[0] < 17 then @.hit()
+      #add the logic to change this hand's revealed status
 
     @get('dealerHand').on 'add', ->
-    	if @.scores() < 17 then @.hit()
+    	if @.scores()[0] < 17 then @.hit()
 #Game Logic Compiled here
 
 
