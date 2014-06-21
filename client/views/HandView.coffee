@@ -14,7 +14,10 @@ class window.HandView extends Backbone.View
     @$el.html @template @collection
     @$el.append @collection.map (card) ->
       new CardView(model: card).$el
+
     @$('.score').text @collection.scores()[0]
+
+
     #include an each statement to drop each of the elements in the array
 
     #logic that checks the length of collection.scores.  If the length
