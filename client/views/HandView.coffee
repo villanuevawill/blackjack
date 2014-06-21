@@ -15,4 +15,9 @@ class window.HandView extends Backbone.View
     @$el.append @collection.map (card) ->
       new CardView(model: card).$el
     @$('.score').text @collection.scores()[0]
+    #include an each statement to drop each of the elements in the array
+
+    #logic that checks the length of collection.scores.  If the length
+    #is greater than 1, then we will display both [0] and [1]
+    #otherwise, we only have access to just [0]
 

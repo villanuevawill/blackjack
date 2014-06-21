@@ -17,4 +17,9 @@ class window.Hand extends Backbone.Collection
     score = @reduce (score, card) ->
       score + if card.get 'revealed' then card.get 'value' else 0
     , 0
-    if hasAce then [score, score + 10] else [score]
+    if hasAce
+      if score and score + 10 <= 21 then [score, score + 10]
+      else if score <= 21 then [score]
+      else ['bust']
+    else
+      if score <= 21 then [score] else ['bust']
